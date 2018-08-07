@@ -111,18 +111,20 @@ Create mod-jk.conf
 LoadModule jk_module modules/mod_jk.so
 
 JkWorkersFile conf.d/worker.properties
-JkMount /student local
-JkMount /student/* local
+JkMount /student applist
+JkMount /student/* applist
 
 ```
 
 Create worker.properties file
 ```
 # cat /etc/httpd/conf.d/worker.properties 
-worker.list=local
-worker.local.host=localhost
-worker.local.port=8009
+worker.list=applist
+worker.applist.host=appserver
+worker.applist.port=8009
 ```
+
+#### `Note: appserver is the name of the appliation server`
 
 #### 4. Restart Web Server.
 
